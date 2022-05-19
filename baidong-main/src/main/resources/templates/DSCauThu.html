@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <style>
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fruit">
+        <div class="row" style="height: 60px;">
+            <div style="font-size: 200%;
+                text-align: center;font-weight: 600;
+                display: block;">
+                Quản lý đội bóng
+            </div>
+        </div>
+    </div>
+    <!-- menu -->
+    <div class="container-fruit" style="height: 50px; background-color:blanchedalmond;font-size: 25px;">
+        <table>
+            <tr>
+                <th style="width: 800px; text-align: center;"><a style="color: brown;" href="/">Trang chủ</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: black;" href="/dangkycauthu">Đăng ký cầu thủ</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Lên lịch thi đấu</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Phân công trọng tài</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Đăng xuất</a></th>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <Center>
+            <span style="font-size: 200%;font-weight: 500; margin-top: 20px;">Danh sách cầu thủ </span>
+            <form th:action="@{|/DSCauThu/${trandau.id}|}" th:object="${form}" method="post">
+            <table style="width: 60%;border-collapse: collapse;border: 1px solid black;margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <td style="width: 5%;">stt</td>
+                        <td style="width: 30%;">Họ và tên</td>
+                        <td style="width: 15%;">Vị trí</td>
+                        <td style="width: 15%;">Năm sinh</td>
+                        <td style="width: 15%;"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item,is : *{cauthu}">
+                        <td style="width: 5%; " th:text="${is.index+1}">1</td>
+                        <td style="width: 30%;" th:text="${item.ten}">C.Ronaldo</td>
+                        <td style="width: 15%;" th:text="${item.vitrithidau}">ST</td>
+                        <td style="width: 15%;" th:text="${item.namsinh}">1989</td>
+                        <td style="width: 15%;">
+                            <label>
+                                <input type="checkbox" name="id"
+                                       th:value="${item.id}"
+                                       th:field="*{cauthu[__${is.index}__].id}"
+                                />
+                            </label>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <button id="btndangky" type="submit"> đăng ký </button>
+            </form>
+        </Center>
+    </div>
+    <div class="footer" style="text-align: center;margin-top: 40vh;">
+        <span> Coding by NguyenVanDong.
+            <br> Hotline: 0332604789
+        </span>
+    </div>
+    <script th:src="@{dscauthu.js}"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <style>
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fruit">
+        <div class="row" style="height: 60px;">
+            <div style="font-size: 200%;
+                text-align: center;font-weight: 600;
+                display: block;">
+                Quản lý đội bóng
+            </div>
+        </div>
+    </div>
+    <!-- menu -->
+    <div class="container-fruit" style="height: 50px; background-color:blanchedalmond;font-size: 25px;">
+        <table>
+            <tr>
+                <th style="width: 800px; text-align: center;"><a style="color: brown;" href="TranDau.html">Trang chủ</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: black;" href="DangKyDS.html">Đăng ký cầu thủ</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Lên lịch thi đấu</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Phân công trọng tài</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Đăng xuất</a></th>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <Center>
+            <span style="font-size: 200%;font-weight: 500; margin-top: 20px;" th:text="${ten}">Lịch thi đấu vòng 1</span>
+            <table style="width: 60%;border-collapse: collapse;border: 1px solid black;margin-top: 10px;">
+                <tr>
+                    <th style="width: 30%;">Đội A</th>
+                    <th style="width: 30%;">Thời gian</th>
+                    <th style="width: 30%;">Đội B</th>
+                    <th></th>
+                </tr>
+                <tr th:each="item : ${trandau}">
+                    <td style="width: 30%;" th:text="${item.tenDoiNha}">Manchester United</td>
+                    <td style="width: 30%;" th:text="${item.thoigianthidau}">18:00-17/11/2021</td>
+                    <td style="width: 30%;" th:text="${item.tenDoiKhach}">Chelsea FC</td>
+                    <td><a th:href="@{|/trandau/${item.id}|}">Chọn</a></td>
+                </tr>
+
+            </table>
+
+        </Center>
+    </div>
+    <div class="footer" style="text-align: center;margin-top: 55vh;">
+        <span> Coding by NguyenVanDong.
+            <br> Hotline: 0332604789
+        </span>
+    </div>
+</body>
+
+</html>

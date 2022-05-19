@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+</head>
+
+<body>
+    <div class="container-fruit">
+        <div class="row" style="height: 60px;">
+            <div style="font-size: 200%;
+                text-align: center;font-weight: 600;
+                display: block;">
+                Quản lý đội bóng
+            </div>
+        </div>
+    </div>
+    <!-- menu -->
+    <div class="container-fruit" style="height: 50px; background-color:blanchedalmond;font-size: 25px;">
+        <table>
+            <tr>
+                <th style="width: 800px; text-align: center;"><a style="color: brown;" href="/">Trang chủ</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: black;" href="/dangkycauthu">Đăng ký cầu thủ</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Lên lịch thi đấu</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Phân công trọng tài</a></th>
+                <th style="width: 800px;text-align: center;"><a style="color: brown;" href="#">Đăng xuất</a></th>
+            </tr>
+        </table>
+    </div>
+    <div class="container">
+        <Center>
+            <span style="font-size: 200%;font-weight: 500; margin-top: 20px;">Chọn vòng đấu</span>
+            <form action="" th:action="@{/lichthidau}" th:object="${vong}"  method='POST'>
+                <label >Vòng đấu:</label>
+                <select th:field="*{id}">
+                    <option value=""> -- </option>
+                    <option th:each="item : ${vongdau}" th:value="${item.id}" th:text="${item.ten}"></option>
+                </select>
+                <br><br>
+                <button type="submit">Next</button>
+            </form>
+        </Center>
+    </div>
+    <div class="footer" style="text-align: center;margin-top: 62vh;">
+        <span> Coding by NguyenVanDong.
+            <br> Hotline: 0332604789
+        </span>
+    </div>
+</body>
+
+</html>
